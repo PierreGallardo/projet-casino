@@ -1,9 +1,22 @@
 <?php
 
 require __DIR__."\src\Roulette.php";
+require __DIR__."\src\Joueur.php";
+
+function afficherMenu(){
+    echo "1 : Jouer\n
+    2: Voir gains\n
+    3: Quitter\n";
+}
 
 $plateau = new Roulette();
 
-$case = $plateau->getCaseRandom();
+$nom = readline("Votre nom :");
 
-var_dump($case);
+$nbJetons = readline("Nombres Jetons :");
+
+$joueur = new Joueur($nom, $nbJetons);
+
+$plateau->tirerCaseRandom();
+
+echo $plateau->afficherCase();

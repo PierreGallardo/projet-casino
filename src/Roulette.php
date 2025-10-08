@@ -13,11 +13,38 @@ class Roulette {
                             ['noir', 28], ['noir', 29], ['rouge', 30],
                             ['noir', 31], ['rouge', 32], ['noir', 33],
                             ['rouge', 34], ['noir', 35], ['rouge', 36]];
+    private array $caseTiree;
 
 
     public function __construct(){}
 
-    public function getCaseRandom():array {
-        return $this->grille[rand(0,36)];
+    public function tirerCaseRandom():void {
+        $this->caseTiree = $this->grille[rand(0,36)];
+    }
+
+
+    public function afficherCase():string{
+        if($this->caseTiree[0] == 'rouge'){
+            $couleurTexte = "\033[31m";
+        } else {
+            $couleurTexte = "";
+        }
+        return $couleurTexte.$this->caseTiree[0]." ".$this->caseTiree[1];
+    }
+
+    public function miserCase(int $nbJetons, array $caseChoisi):int{
+        if ($caseChoisi == $this->caseTiree){
+
+        } else {
+            if ($caseChoisi[0] == $this->caseTiree[0]){
+                $nbJetons = $nbJetons*2;
+            }
+            if ($caseChoisi[1] == $this->caseTiree[1]){
+                $nbJetons = $nbJetons*2;
+            }
+        }
+        
+        
+       
     }
 }
