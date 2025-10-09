@@ -1,50 +1,94 @@
 <?php
 
 class Roulette {
-    private array $grille = [['rouge', 1],['noir', 2],['rouge', 3],
-                            ['noir', 4], ['rouge', 5], ['noir', 6],
-                            ['rouge',7], ['noir', 8], ['rouge', 9],
-                            ['noir', 10], ['noir', 11], ['rouge', 12],
-                            ['noir', 13], ['rouge', 14], ['noir', 15],
-                            ['rouge', 16], ['noir', 17], ['rouge', 18],
-                            ['rouge', 19], ['noir', 20], ['rouge', 21],
-                            ['noir', 22], ['rouge', 23], ['noir', 24],
-                            ['rouge', 25], ['noir', 26], ['rouge', 27],
-                            ['noir', 28], ['noir', 29], ['rouge', 30],
-                            ['noir', 31], ['rouge', 32], ['noir', 33],
-                            ['rouge', 34], ['noir', 35], ['rouge', 36]];
+
+    private array $grille = [0=>'vert', 1=>'rouge', 2=>'noir', 3=>'rouge', 
+                                    4=>'noir', 5=>'rouge', 6=>'noir', 
+                                    7=>'rouge', 8=>'noir', 9=>'rouge',
+                                    10=>'noir', 11=>'noir', 12=>'rouge',
+                                    13=>'noir', 14=>'rouge', 15=>'noir',
+                                    16=>'rouge', 17=>'noir', 18=>'rouge',
+                                    19=>'rouge', 20=>'noir', 21=>'rouge',
+                                    22=>'noir', 23=>'rouge', 24=>'noir',
+                                    25=>'rouge', 26=>'noir', 27=>'rouge',
+                                    28=>'noir', 29=>'noir', 30=>'rouge',
+                                    31=>'noir', 32=>'rouge', 33=>'noir',
+                                    34=>'rouge', 35=>'noir', 36=>'rouge'];
     private array $caseTiree;
 
 
     public function __construct(){}
 
     public function tirerCaseRandom():void {
-        $this->caseTiree = $this->grille[rand(0,36)];
+        $rand = rand(0,37);
+        $this->caseTiree[$rand] = $this->grille[$rand];
     }
 
 
-    public function afficherCase():string{
-        if($this->caseTiree[0] == 'rouge'){
+    public function afficherCase():string{ 
+        if(implode($this->caseTiree) == 'rouge'){
             $couleurTexte = "\033[31m";
         } else {
-            $couleurTexte = "";
+            $couleurTexte = "\033[30m";
         }
-        return $couleurTexte.$this->caseTiree[0]." ".$this->caseTiree[1];
+        return "\n".$couleurTexte.key($this->caseTiree)." ".implode($this->caseTiree)."\033[0m ";
     }
 
-    public function miserCase(int $nbJetons, array $caseChoisi):int{
-        if ($caseChoisi == $this->caseTiree){
+    /*public function getPlateau():array{
+        return $this->grille;
+    }*/
 
+    public function afficherPlateau():string{
+        $str = " ";
+        foreach($this->grille as $key => $value) {
+            
+            if($value == 'rouge'){
+                $str .= "\033[31m ".$key." ".$value."\033[0m - "; 
+            }else if($value == 'noir'){
+                $str .= "\033[30m ".$key." ".$value."\033[0m - "; 
+            }else if($value == 'vert'){
+                $str .= "\033[32m ".$key." ".$value."\033[0m - "; 
+            }
+            
+        }
+        return $str;
+    }
+
+    public function miserCase(int $nbJetonsTotal, int $nbJetonsMise, int $caseChoisi):int{
+        if ($caseChoisi == key($this->caseTiree)){
+            $nbJetonsTotal += $nbJetonsMise*36;
         } else {
-            if ($caseChoisi[0] == $this->caseTiree[0]){
-                $nbJetons = $nbJetons*2;
+            $nbJetonsTotal = $nbJetonsTotal-$nbJetonsMise;
+        }
+        return $nbJetonsTotal;
+        
+    }
+
+    public function miseCouleur(int $nbJetonsTotal, int $nbJetonsMise, string $couleur):int{
+        if ($couleur == implode($this->caseTiree)){
+            $nbJetonsTotal += $nbJetonsMise*2;
+        } else {
+            $nbJetonsTotal = $nbJetonsTotal-$nbJetonsMise;
+        }
+        return $nbJetonsTotal;
+    }
+
+    public function miseParite(int $nbJetonsTotal, int $nbJetonsMise, string $parite):int{
+        if ($parite == 'pair'){
+            if (key($this->caseTiree)%2==0){
+                $nbJetonsTotal += $nbJetonsMise*2;
+            } else {
+                $nbJetonsTotal = $nbJetonsTotal-$nbJetonsMise;
             }
-            if ($caseChoisi[1] == $this->caseTiree[1]){
-                $nbJetons = $nbJetons*2;
+        } else if ($parite == 'impair'){
+            if (key($this->caseTiree)%2!=0){
+                $nbJetonsTotal += $nbJetonsMise*2;
+            } else {
+                $nbJetonsTotal = $nbJetonsTotal-$nbJetonsMise;
             }
         }
-        
-        
-       
+        return $nbJetonsTotal;
     }
+
+    
 }
