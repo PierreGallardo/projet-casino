@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__."\src\Roulette.php";
-require __DIR__."\src\Joueur.php";
+require __DIR__."\..\src\Roulette.php";
+require __DIR__."\..\src\Joueur.php";
 
 function afficherMenu(){
     echo "
@@ -26,7 +26,7 @@ $plateau = new Roulette();
 
 //$nom = readline("Votre nom :");
 
-$nbJetons = readline("Nombres Jetons :");
+/*$nbJetons = readline("Nombres Jetons :");
 
 afficherMenu();
 $choix1 = readline("Votre choix :");
@@ -88,8 +88,46 @@ switch ($choix1) {
 
     default:
         break;
-}
+}*/
     
 
 //$joueur = new Joueur($nom, $nbJetons);
 
+?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Casino en ligne</title>
+</head>
+<body>
+    <div class="mb-8">
+    <?php foreach ($plateau->getHistorique() as $row): ?>
+        <?= htmlspecialchars($row)?>
+    <?php endforeach;?>
+    </div>
+    <div class="mt-8 mx-auto grid grid-cols-3 gap-x-4 gap-y-8">
+    <?php foreach($plateau->getPlateau() as $nombre => $couleur): ?>
+        <?php if ($couleur == 'rouge'):?>
+            <button class="btn bg-red-600 text-white font-bold"><?= htmlspecialchars($nombre)?></button>
+        <?php else: ?>
+            <?php if($couleur == 'vert'):?>
+                <button class="btn bg-green-600 text-white font-bold"><?= htmlspecialchars($nombre)?></button>
+                <?php else: ?>
+                <button class="btn bg-black text-white font-bold"><?= htmlspecialchars($nombre)?></button>
+                <?php endif;?> 
+        <?php endif;?> 
+    <?php endforeach; ?>
+    </div>
+    <form method="POST">
+        <button type="submit" class="btn">Tirer une case</button>
+    </form>
+    
+
+
+    
+</body>
+</html>

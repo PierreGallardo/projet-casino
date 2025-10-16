@@ -16,12 +16,17 @@ class Roulette {
                                     34=>'rouge', 35=>'noir', 36=>'rouge'];
     private array $caseTiree;
 
+    private array $historique;
 
-    public function __construct(){}
+
+    public function __construct(){
+        $this->historique = [];
+    }
 
     public function tirerCaseRandom():void {
         $rand = rand(0,37);
         $this->caseTiree[$rand] = $this->grille[$rand];
+        array_push($this->historique, $this->caseTiree) ;
     }
 
 
@@ -34,11 +39,15 @@ class Roulette {
         return "\n".$couleurTexte.key($this->caseTiree)." ".implode($this->caseTiree)."\033[0m ";
     }
 
-    /*public function getPlateau():array{
+    public function getPlateau():array{
         return $this->grille;
-    }*/
+    }
 
-    public function afficherPlateau():string{
+    public function getHistorique():array{
+        return $this->historique;
+    }
+
+    public function afficherPlateauCouleur():string{
         $str = " ";
         foreach($this->grille as $key => $value) {
             
