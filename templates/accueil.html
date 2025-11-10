@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royal SIO - Accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Un fond sombre pour une ambiance casino */
+        body {
+            background-color: #121212; /* Un noir un peu plus doux */
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Header Simple -->
+    <header class="bg-gray-900">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-yellow-400">
+                <i class="fas fa-crown mr-2"></i>Casino Royal SIO
+            </a>
+            <!-- Boutons d'action -->
+            <div class="flex items-center space-x-3">
+                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition">Connexion</a>
+                <a href="#" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full text-sm transition">Inscription</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Principale -->
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Bannière d'accueil -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Votre Aventure Commence Ici</h1>
+            <p class="text-lg text-gray-300 mb-8">Recevez 100 SIO points instantanément après votre inscription !</p>
+            <a href="#" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full transition text-lg shadow-lg">Créer mon compte</a>
+        </section>
+
+        <!-- Grille de jeux populaires -->
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-10">Nos Jeux Populaires</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Carte de jeu 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group shadow-lg">
+                    <img src="https://source.unsplash.com/random/300x400/?slot-machine,gold" alt="Jeu 1" class="w-full h-48 object-cover">
+                    <div class="p-4 relative">
+                        <h3 class="font-bold">Mystery Black Jack</h3>
+                        <a href="#" class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <span class="text-white font-bold">Jouer</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte de jeu 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group shadow-lg">
+                    <img src="https://source.unsplash.com/random/300x400/?slot-machine,diamonds" alt="Jeu 2" class="w-full h-48 object-cover">
+                    <div class="p-4 relative">
+                        <h3 class="font-bold">Méga Roulette</h3>
+                        <a href="#" class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <span class="text-white font-bold">Jouer</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="bg-gray-900 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-yellow-400">Termes & Conditions</a>
+                <a href="#" class="hover:text-yellow-400">Jeu Responsable</a>
+                <a href="#" class="hover:text-yellow-400">Contact</a>
+            </div>
+            <p class="text-sm">&copy; 2025 Casino Royal SIO. Tous droits réservés.</p>
+            <p class="text-xs mt-2">Le jeu comporte des risques. Jouez de manière responsable.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
