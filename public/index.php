@@ -28,7 +28,8 @@ $router = new Router($request, $response);
 
 // Définition de toutes les routes de l'application
 $router->addRoute('index',  'index',  ['GET'])
-        ->addRoute('create-compte',  'creerCompte',  ['GET', 'POST']);
+        ->addRoute('create-compte',  'creerCompte',  ['GET', 'POST'])
+        ->addRoute('connexionUser',  'connexionUser',  ['GET', 'POST']);
 
 // Traitement centralisé de la requête courante
 $router->handleRequest();

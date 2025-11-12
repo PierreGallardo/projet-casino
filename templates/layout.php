@@ -24,8 +24,8 @@
             </a>
             <!-- Boutons d'action -->
             <div class="flex items-center space-x-3">
-                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition">Connexion</a>
-                <a href="#" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full text-sm transition">Inscription</a>
+                <a href="index.php?action=connexionUser" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition">Connexion</a>
+                <a href="index.php?action=create-compte" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full text-sm transition">Inscription</a>
             </div>
         </nav>
     </header>

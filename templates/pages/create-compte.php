@@ -57,7 +57,7 @@ ob_start();
             
             <!-- Lien vers la connexion -->
             <p class="text-center text-gray-400 text-sm mt-8">
-                Vous avez déjà un compte ? <a href="#" class="font-medium text-yellow-400 hover:underline">Connectez-vous</a>
+                Vous avez déjà un compte ? <a href="index.php?action=connexionUser" class="font-medium text-yellow-400 hover:underline">Connectez-vous</a>
             </p>
 
 </div>

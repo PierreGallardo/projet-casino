@@ -10,7 +10,7 @@ function creerCompte(Request $request, Response $response){
         $data = $request->allPost();
         $success = createUser($data);
         if ($success) {
-            $response->success("Film créé avec succès");
+            $response->success("Compte créé avec succès");
             $response->redirect("index.php?action=index");
             return;
         } else {
@@ -19,4 +19,9 @@ function creerCompte(Request $request, Response $response){
     }
         
     $response->view(__DIR__ . '/../../templates/pages/create-compte.php', $data);
+}
+
+function connexionUser(Request $request, Response $response){
+    $data = [];        
+    $response->view(__DIR__ . '/../../templates/pages/connexion.php', $data);
 }
