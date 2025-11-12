@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royal SIO - Mon Espace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Un fond sombre pour une ambiance casino */
+        body {
+            background-color: #121212; /* Un noir un peu plus doux */
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Header (adapté pour un utilisateur connecté) -->
+    <header class="bg-gray-900">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="accueil.html" class="text-2xl font-bold text-yellow-400">
+                <i class="fas fa-crown mr-2"></i>Casino Royal SIO
+            </a>
+            <!-- Informations Utilisateur -->
+            <div class="flex items-center space-x-4">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">Bienvenue</p>
+                    <p class="font-bold">Joueur777</p>
+                </div>
+                <a href="connexion.html" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition" title="Déconnexion">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Principale - Tableau de bord simplifié -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <div class="text-center">
+            <!-- Message de bienvenue -->
+            <h1 class="text-4xl md:text-5xl font-extrabold">Votre Espace de Jeu</h1>
+            <p class="text-gray-400 mt-2 text-lg">Prêt à relever de nouveaux défis ?</p>
+
+            <!-- Affichage du solde principal -->
+            <div class="my-12">
+                <div class="bg-gray-900 inline-block p-8 rounded-lg shadow-2xl border border-gray-800">
+                    <h2 class="text-sm font-bold text-gray-400 tracking-widest uppercase">Solde disponible</h2>
+                    <p class="text-6xl font-bold text-yellow-400 mt-2">1,234.56 €</p>
+                </div>
+            </div>
+
+            <!-- Boutons d'action principaux -->
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-lg transition shadow-lg">
+                    <i class="fas fa-play mr-2"></i>Accéder aux jeux
+                </a>
+                <a href="#" class="w-full sm:w-auto bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-full text-lg transition">
+                    Effectuer un dépôt
+                </a>
+            </div>
+        </div>
+        
+        <!-- NOUVELLE SECTION : Gestion des données personnelles -->
+        <div class="max-w-2xl mx-auto mt-20">
+             <div class="bg-gray-900 p-8 rounded-lg shadow-2xl border border-gray-800 text-center">
+                <h3 class="text-2xl font-bold text-yellow-400">Gérez Votre Compte</h3>
+                <p class="text-gray-400 mt-2 mb-6">Mettez à jour vos informations personnelles, changez votre mot de passe ou consultez vos préférences.</p>
+                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition">
+                    Gérer mes informations
+                </a>
+            </div>
+        </div>
+
+        <!-- Section "Vos jeux de table" -->
+        <div class="mt-20">
+            <h3 class="text-2xl font-bold text-center mb-8">Accès Rapide aux Jeux de Table</h3>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+                
+                <!-- Carte Jeu 1 : Blackjack -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group shadow-lg hover:shadow-yellow-400/20 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/1a202c/fbbf24?text=Blackjack" alt="Jeu Blackjack" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h4 class="font-bold text-xl">Blackjack Live</h4>
+                        <p class="text-sm text-gray-400 mb-4">Jeu de Table</p>
+                         <button class="w-full bg-gray-700 group-hover:bg-yellow-400 group-hover:text-gray-900 text-white font-semibold py-3 rounded-lg transition-colors">
+                            Jouer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carte Jeu 2 : Roulette -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group shadow-lg hover:shadow-yellow-400/20 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/1a202c/fbbf24?text=Roulette" alt="Jeu Roulette" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h4 class="font-bold text-xl">Roulette Pro</h4>
+                        <p class="text-sm text-gray-400 mb-4">Jeu de Table</p>
+                         <button class="w-full bg-gray-700 group-hover:bg-yellow-400 group-hover:text-gray-900 text-white font-semibold py-3 rounded-lg transition-colors">
+                            Jouer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer (identique à l'accueil) -->
+    <footer class="bg-gray-900 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-yellow-400">Termes & Conditions</a>
+                <a href="#" class="hover:text-yellow-400">Jeu Responsable</a>
+                <a href="#" class="hover:text-yellow-400">Contact</a>
+            </div>
+            <p class="text-sm">&copy; 2025 Casino Royal SIO. Tous droits réservés.</p>
+            <p class="text-xs mt-2">Le jeu comporte des risques. Jouez de manière responsable.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
