@@ -8,23 +8,32 @@ function createUser(array $data){
         return false;
     }
 
+    $sql = "SELECT * FROM user WHERE nom_User = :nom_User";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nom_User', $data['nom_User']);
+    $reponse = $stmt->execute(); //$reponse boolean sur l'état de la requête
+    $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($utilisateur != null) {
+        return false;
+    }
+    $sql = "SELECT * FROM user WHERE mail_User = :mail_User";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':mail_User', $data['mail_User']);
+    $reponse = $stmt->execute(); //$reponse boolean sur l'état de la requête
+    $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($utilisateur != null) {
+        return false;
+    }
+
     try {
-        $sql = "UPDATE films 
-                SET titre = :titre, realisateur = :realisateur, annee = :annee, 
-                    duree = :duree, synopsis = :synopsis, genre_id = :genre_id, note = :note 
-                WHERE id = :id";
+        $sql = "INSERT INTO user (nom_User, mail_User, mdp_User, nbSIOPoints) VALUES (:nom_User, :mail_User, :mdp_User, 100)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':titre', $data['titre']);
-        $stmt->bindParam(':realisateur', $data['realisateur']);
-        $stmt->bindParam(':annee', $data['annee'], PDO::PARAM_INT);
-        $stmt->bindParam(':duree', $data['duree'], PDO::PARAM_INT);
-        $stmt->bindParam(':synopsis', $data['synopsis']);
-        $stmt->bindParam(':genre_id', $data['genre_id'], PDO::PARAM_INT);
-        $stmt->bindParam(':note', $data['note']);
+        $stmt->bindParam(':nom_User', $data['nom_User']);
+        $stmt->bindParam(':mail_User', $data['mail_User']);
+        $stmt->bindParam(':mdp_User', $data['mdp_User']);
         return $stmt->execute();
     } catch (PDOException $e) {
-        error_log("Erreur lors de la mise à jour du film : " . $e->getMessage());
+        error_log("Erreur lors de la création du compte : " . $e->getMessage());
         return false;
     }
 

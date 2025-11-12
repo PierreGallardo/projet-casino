@@ -17,20 +17,20 @@ ob_start();
             <form action="#" method="POST" class="space-y-6">
                 <!-- Champ Nom d'utilisateur -->
                 <div>
-                    <label for="username" class="text-sm font-bold text-gray-300 block mb-2">Nom d'utilisateur</label>
-                    <input type="text" id="username" name="username" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" placeholder="Ex: Joueur777" required>
+                    <label for="nom_User" class="text-sm font-bold text-gray-300 block mb-2">Nom d'utilisateur</label>
+                    <input type="text" id="nom_User" name="nom_User" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" placeholder="Ex: Joueur777" required>
                 </div>
 
                 <!-- Champ Email -->
                 <div>
-                    <label for="email" class="text-sm font-bold text-gray-300 block mb-2">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" placeholder="votre.email@exemple.com" required>
+                    <label for="mail_User" class="text-sm font-bold text-gray-300 block mb-2">Adresse e-mail</label>
+                    <input type="email" id="mail_User" name="mail_User" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" placeholder="votre.email@exemple.com" required>
                 </div>
 
                 <!-- Champ Mot de passe -->
                 <div>
-                    <label for="password" class="text-sm font-bold text-gray-300 block mb-2">Mot de passe</label>
-                    <input type="password" id="password" name="password" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" required>
+                    <label for="mdp_User" class="text-sm font-bold text-gray-300 block mb-2">Mot de passe</label>
+                    <input type="password" id="mdp_User" name="mdp_User" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 transition" required>
                 </div>
                 
                 <!-- Champ Confirmation du mot de passe -->
