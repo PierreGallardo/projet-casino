@@ -1,133 +1,34 @@
 <?php
 
-require __DIR__."\..\src\Roulette.php";
-require __DIR__."\..\src\Joueur.php";
+/**
+ * Front Controller - Point d'entrée de l'application avec Router OO
+ * Route les requêtes vers les bons contrôleurs via une classe Router dédiée
+ */
 
-function afficherMenu(){
-    echo "
-    1: Jouer\n
-    2: Voir gains\n
-    3: Quitter\n";
-}
+// Configuration des erreurs pour le développement
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-function afficherMenu2(): void{
-    echo "\n- Choix de la mise - \n
-    1: Rouge\n
-    2: Noir\n
-    3: Pair \n
-    4: Impair\n
-    5: Rouge-Pair\n
-    6: Rouge-Impair\n
-    7: Noir-Pair\n
-    8: Noir-Impair\n";
-}
+// Démarrage de la session pour les messages
+session_start();
 
-$plateau = new Roulette();
+// Inclusion des classes Request, Response et Router
+require_once __DIR__ . '/../src/Http/Request.php';
+require_once __DIR__ . '/../src/Http/Response.php';
+require_once __DIR__ . '/../src/Routing/Router.php';
 
-//$nom = readline("Votre nom :");
+// Inclusion du contrôleur des films (et autres si besoin)
+require_once __DIR__ . '/../src/controllers/Controller_Utilisateur.php';
+require_once __DIR__ . '/../src/controllers/Controller_Accueil.php';
 
-/*$nbJetons = readline("Nombres Jetons :");
+// Création des objets Request, Response et Router
+$request = new Request();
+$response = new Response();
+$router = new Router($request, $response);
 
-afficherMenu();
-$choix1 = readline("Votre choix :");
-switch ($choix1) {
-    case 1:
-        echo $plateau->afficherPlateau();
-        afficherMenu2();
-        $choix2= readline("Votre choix :");
-        $mise = readline("Nombre à miser : ");
-        while ($mise > $nbJetons) {
-            echo "Impossible vous n'avez pas assez de jetons !\n;";
-            $mise = readline("Nombre à miser : ");
-        }
-        switch ($choix2) {
-            
-            case 1:
-                $plateau->tirerCaseRandom();
-                echo $plateau->afficherCase();
-                $nbJetons = $plateau->miseCouleur($nbJetons, $mise, 'rouge');
-                echo "\nNombre de jetons : $nbJetons";
-                break;
+// Définition de toutes les routes de l'application
+$router->addRoute('index',  'index',  ['GET'])
+        ->addRoute('create-compte',  'creerCompte',  ['GET']);
 
-            case 2:
-                $plateau->tirerCaseRandom();
-                echo $plateau->afficherCase();
-                $nbJetons = $plateau->miseCouleur($nbJetons, $mise, 'noir');
-                echo "\nNombre de jetons : $nbJetons";
-                break;
-            case 3:
-                $plateau->tirerCaseRandom();
-                echo $plateau->afficherCase();
-                $nbJetons = $plateau->miseParite($nbJetons, $mise, 'pair');
-                echo "\nNombre de jetons : $nbJetons";
-                break;
-            case 4:
-                $plateau->tirerCaseRandom();
-                echo $plateau->afficherCase();
-                $nbJetons = $plateau->miseParite($nbJetons, $mise, 'impair');
-                echo "\nNombre de jetons : $nbJetons";
-                break;
-            case 5:
-                $plateau->tirerCaseRandom();
-                echo $plateau->afficherCase();
-                $nbJetons = $plateau->miseCouleur($nbJetons, $mise, 'rouge');
-                $nbJetons = $plateau->miseParite($nbJetons, $mise, 'pair');
-                echo "\nNombre de jetons : $nbJetons";
-                break;
-        }
-        
-        break;
-    
-    case 2:
-
-        break;
-
-    case 3: 
-
-        break;
-
-    default:
-        break;
-}*/
-    
-
-//$joueur = new Joueur($nom, $nbJetons);
-
-?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Casino en ligne</title>
-</head>
-<body>
-    <div class="mb-8">
-    <?php foreach ($plateau->getHistorique() as $row): ?>
-        <?= htmlspecialchars($row)?>
-    <?php endforeach;?>
-    </div>
-    <div class="mt-8 mx-auto grid grid-cols-3 gap-x-4 gap-y-8">
-    <?php foreach($plateau->getPlateau() as $nombre => $couleur): ?>
-        <?php if ($couleur == 'rouge'):?>
-            <button class="btn bg-red-600 text-white font-bold"><?= htmlspecialchars($nombre)?></button>
-        <?php else: ?>
-            <?php if($couleur == 'vert'):?>
-                <button class="btn bg-green-600 text-white font-bold"><?= htmlspecialchars($nombre)?></button>
-                <?php else: ?>
-                <button class="btn bg-black text-white font-bold"><?= htmlspecialchars($nombre)?></button>
-                <?php endif;?> 
-        <?php endif;?> 
-    <?php endforeach; ?>
-    </div>
-    <form method="POST">
-        <button type="submit" class="btn">Tirer une case</button>
-    </form>
-    
-
-
-    
-</body>
-</html>
+// Traitement centralisé de la requête courante
+$router->handleRequest();
