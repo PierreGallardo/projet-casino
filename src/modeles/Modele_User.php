@@ -7,6 +7,7 @@ function createUser(array $data){
     if (!$pdo) {
         return false;
     }
+    $data['mdp_User']=password_hash($data['mdp_User'], PASSWORD_DEFAULT);
 
     $sql = "SELECT * FROM user WHERE nom_User = :nom_User";
     $stmt = $pdo->prepare($sql);
@@ -37,4 +38,30 @@ function createUser(array $data){
         return false;
     }
 
+}
+
+function connexionUserByMail(array $data){
+    $pdo = getDatabaseConnection();
+    if (!$pdo) {
+        return false;
+    }
+    try{
+        $sql = 'SELECT nom_User, mail_User, mdp_User FROM user WHERE mail_User= :mail_User';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':mail_User', $data['mail_User'], PDO::PARAM_STR);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user && password_verify($data['mdp_User'], $user['mdp_User'])) {
+            session_start();
+            session_regenerate_id(true);
+            $_SESSION['nom_User'] = $user['nom_User'];
+            $_SESSION['mail_User'] = $user['mail_User'];
+            $_SESSION['connexion'] = true;
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        return false;
+    }
 }

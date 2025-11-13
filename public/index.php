@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Front Controller - Point d'entrée de l'application avec Router OO
  * Route les requêtes vers les bons contrôleurs via une classe Router dédiée
@@ -29,7 +28,9 @@ $router = new Router($request, $response);
 // Définition de toutes les routes de l'application
 $router->addRoute('index',  'index',  ['GET'])
         ->addRoute('create-compte',  'creerCompte',  ['GET', 'POST'])
-        ->addRoute('connexionUser',  'connexionUser',  ['GET', 'POST']);
+        ->addRoute('connexionUser',  'connexionUser',  ['GET', 'POST'])
+        ->addRoute('dashboard',  'dashboard',  ['GET', 'POST'])
+        ->addRoute('deconnexion',  'deconnexion',  ['GET']);
 
 // Traitement centralisé de la requête courante
 $router->handleRequest();

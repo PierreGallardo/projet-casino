@@ -14,8 +14,29 @@
     </style>
 </head>
 <body class="text-white">
+    
 
-    <!-- Header Simple -->
+    <?php if(isset($_SESSION['connexion'])): ?>
+ <!-- Header (adapté pour un utilisateur connecté) -->
+    <header class="bg-gray-900">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.php?action=index" class="text-2xl font-bold text-yellow-400">
+                <i class="fas fa-crown mr-2"></i>Casino Royal SIO
+            </a>
+            <!-- Informations Utilisateur -->
+            <div class="flex items-center space-x-4">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">Bienvenue</p>
+                    <p class="font-bold"><?= $_SESSION['nom_User']?></p>
+                </div>
+                <a href="index.php?action=deconnexion" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition" title="Déconnexion">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <?php else: ?>
     <header class="bg-gray-900">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
@@ -29,6 +50,9 @@
             </div>
         </nav>
     </header>
+    <?php endif ;?>
+    <!-- Header Simple -->
+
 
     <!-- Section Principale -->
     <main class="container mx-auto px-6 py-12">
