@@ -46,7 +46,7 @@ function connexionUserByMail(array $data){
         return false;
     }
     try{
-        $sql = 'SELECT nom_User, mail_User, mdp_User FROM user WHERE mail_User= :mail_User';
+        $sql = 'SELECT nom_User, mail_User, mdp_User, nbSIOPoints FROM user WHERE mail_User= :mail_User';
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':mail_User', $data['mail_User'], PDO::PARAM_STR);
         $stmt->execute();
@@ -56,6 +56,7 @@ function connexionUserByMail(array $data){
             session_regenerate_id(true);
             $_SESSION['nom_User'] = $user['nom_User'];
             $_SESSION['mail_User'] = $user['mail_User'];
+            $_SESSION['points']= $user['nbSIOPoints'];
             $_SESSION['connexion'] = true;
             return true;
         } else {

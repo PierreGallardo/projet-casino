@@ -12,7 +12,7 @@ ob_start();
             <div class="my-12">
                 <div class="bg-gray-900 inline-block p-8 rounded-lg shadow-2xl border border-gray-800">
                     <h2 class="text-sm font-bold text-gray-400 tracking-widest uppercase">Solde disponible</h2>
-                    <p class="text-6xl font-bold text-yellow-400 mt-2">1,234.56 €</p>
+                    <p class="text-6xl font-bold text-yellow-400 mt-2"><?= $_SESSION['points'] ?> <br><span class="text-2xl">SIO Points</span></p>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@ ob_start();
                 <div class="bg-gray-800 rounded-lg overflow-hidden group shadow-lg hover:shadow-yellow-400/20 transition-shadow duration-300">
                     <img src="https://placehold.co/600x400/1a202c/fbbf24?text=Blackjack" alt="Jeu Blackjack" class="w-full h-48 object-cover">
                     <div class="p-5">
-                        <h4 class="font-bold text-xl">Blackjack Live</h4>
+                        <h4 class="font-bold text-xl">Mystery Blackjack</h4>
                         <p class="text-sm text-gray-400 mb-4">Jeu de Table</p>
                          <button class="w-full bg-gray-700 group-hover:bg-yellow-400 group-hover:text-gray-900 text-white font-semibold py-3 rounded-lg transition-colors">
                             Jouer
